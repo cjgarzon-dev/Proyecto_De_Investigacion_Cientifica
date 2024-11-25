@@ -109,7 +109,22 @@ def calculate_experiments(experiments):
         print("Selección inválida.")
 
 def compare_experiments(experiments): #funcion para comparar experimentos = 2 o mas 
-    pass
+    visualize_experiments(experiments)
+    if not experiments:
+        return
+    try:
+        numberExp = list(map(int, input("\nSeleccione el número del experimento a comparar separado por comas: ").split(",")))
+        resultCompare = []
+        for index in numberExp:
+            #if(0 < numberExp < len(experiments)):
+                average = sum(experiments[numberExp][experiments.resultsExperiment])/len(experiments[numberExp][experiments.resultsExperiment])
+                resultCompare.append(numberExp,average)
+            #else:
+                print('Número de experimento no válido')
+        for index, average in resultCompare:
+            print(f'{index+1}. {experiments[index][0]} - {average}')
+    except (IndexError,ValueError):
+        print('Experimento no existente')
 
 def erase_experiments(experiments): #funcion para eliminar un experimento
     visualize_experiments(experiments)
