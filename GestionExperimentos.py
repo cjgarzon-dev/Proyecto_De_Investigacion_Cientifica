@@ -112,13 +112,18 @@ def compare_experiments(experiments): #funcion para comparar experimentos = 2 o 
     visualize_experiments(experiments)
     if not experiments:
         return
+    res = []
+    for exp in experiments:
+        res = exp.resultsExperiment
+    print(res)
     try:
-        numberExp = list(map(int, input("\nSeleccione el número del experimento a comparar separado por comas: ").split(",")))
         resultCompare = []
-        for index in numberExp:
+        numberExp = float(input("\nSeleccione el número del experimento a comparar separado por comas: "))
+        resultCompare.append(numberExp)
+        for index in resultCompare:
             #if(0 < numberExp < len(experiments)):
-                average = sum(experiments[numberExp][experiments.resultsExperiment])/len(experiments[numberExp][experiments.resultsExperiment])
-                resultCompare.append(numberExp,average)
+                average = min(experiments[index][res])
+                resultCompare.append(index,average)
             #else:
                 print('Número de experimento no válido')
         for index, average in resultCompare:
